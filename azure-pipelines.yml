@@ -15,5 +15,10 @@ steps:
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+- task: KubernetesManifest@0
+  inputs:
+    action: 'deploy'
+    kubernetesServiceConnection: 'foodyhive-aks-serviceconnection'
+    namespace: 'default'
+    manifests: '/'
   displayName: 'Run a multi-line script'
