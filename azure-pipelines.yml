@@ -10,20 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: HelmDeploy@0
+- task: KubernetesManifest@0
   inputs:
-    connectionType: 'Azure Resource Manager'
-    azureSubscription: 'Azure Pass - Sponsorship(3244b50c-81fc-4251-80c2-f041527ed98e)'
-    azureResourceGroup: 'foodyhive'
-    kubernetesCluster: 'foodyhive-aks'
+    action: 'deploy'
+    kubernetesServiceConnection: 'foodyhive-aks-serviceconnection'
     namespace: 'default'
-    command: install
-    chartType: FilePath
-    chartPath: .
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    manifests: 'sdep.yaml'
+  displayName: 'deploy to aks'
