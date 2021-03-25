@@ -12,3 +12,11 @@ for /D %%s in (.\*) do (
     )
   )
 )
+
+@echo off
+setlocal enableDelayedExpansion
+FOR /F "tokens=1,2 delims==" %%x in (vv.txt) DO (
+  set "on=%%x"
+  set "nn=%%y"
+  ren "!on!" "!nn!"
+)
