@@ -1,0 +1,2 @@
+.\fdt1\file1.txt=file2.txt
+.\fdt2\mfile.txt=file3.txt
